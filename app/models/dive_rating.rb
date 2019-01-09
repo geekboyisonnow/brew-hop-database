@@ -1,0 +1,2 @@
+class DiveRating < ApplicationRecord
+end

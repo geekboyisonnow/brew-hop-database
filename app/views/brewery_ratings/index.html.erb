@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Brewery Ratings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Ipa</th>
+      <th>Apa</th>
+      <th>Ale</th>
+      <th>Hefe</th>
+      <th>Porter</th>
+      <th>Stout</th>
+      <th>Pale</th>
+      <th>Blonde</th>
+      <th>Pilsner</th>
+      <th>Growler</th>
+      <th>Crowler</th>
+      <th>Rail</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @brewery_ratings.each do |brewery_rating| %>
+      <tr>
+        <td><%= brewery_rating.ipa %></td>
+        <td><%= brewery_rating.apa %></td>
+        <td><%= brewery_rating.ale %></td>
+        <td><%= brewery_rating.hefe %></td>
+        <td><%= brewery_rating.porter %></td>
+        <td><%= brewery_rating.stout %></td>
+        <td><%= brewery_rating.pale %></td>
+        <td><%= brewery_rating.blonde %></td>
+        <td><%= brewery_rating.pilsner %></td>
+        <td><%= brewery_rating.growler %></td>
+        <td><%= brewery_rating.crowler %></td>
+        <td><%= brewery_rating.rail %></td>
+        <td><%= link_to 'Show', brewery_rating %></td>
+        <td><%= link_to 'Edit', edit_brewery_rating_path(brewery_rating) %></td>
+        <td><%= link_to 'Destroy', brewery_rating, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Brewery Rating', new_brewery_rating_path %>

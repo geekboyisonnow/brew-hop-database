@@ -1,0 +1,2 @@
+class BreweryRating < ApplicationRecord
+end

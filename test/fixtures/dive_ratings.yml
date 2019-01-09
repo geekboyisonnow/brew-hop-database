@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cd_jukebox: false
+  sweet_caroline: false
+  pickeled: false
+  dollar_bills: false
+  writing_wall: false
+  mirror: false
+  pbr: false
+  domestic_sign: false
+  wash_hands: false
+  urinal_cake: false
+  smoking: false
+  dart_board: false
+
+two:
+  cd_jukebox: false
+  sweet_caroline: false
+  pickeled: false
+  dollar_bills: false
+  writing_wall: false
+  mirror: false
+  pbr: false
+  domestic_sign: false
+  wash_hands: false
+  urinal_cake: false
+  smoking: false
+  dart_board: false

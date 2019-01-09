@@ -1,0 +1,77 @@
+<%= form_with(model: dive_rating, local: true) do |form| %>
+  <% if dive_rating.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(dive_rating.errors.count, "error") %> prohibited this dive_rating from being saved:</h2>
+
+      <ul>
+      <% dive_rating.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :cd_jukebox %>
+    <%= form.check_box :cd_jukebox %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sweet_caroline %>
+    <%= form.check_box :sweet_caroline %>
+  </div>
+
+  <div class="field">
+    <%= form.label :pickeled %>
+    <%= form.check_box :pickeled %>
+  </div>
+
+  <div class="field">
+    <%= form.label :dollar_bills %>
+    <%= form.check_box :dollar_bills %>
+  </div>
+
+  <div class="field">
+    <%= form.label :writing_wall %>
+    <%= form.check_box :writing_wall %>
+  </div>
+
+  <div class="field">
+    <%= form.label :mirror %>
+    <%= form.check_box :mirror %>
+  </div>
+
+  <div class="field">
+    <%= form.label :pbr %>
+    <%= form.check_box :pbr %>
+  </div>
+
+  <div class="field">
+    <%= form.label :domestic_sign %>
+    <%= form.check_box :domestic_sign %>
+  </div>
+
+  <div class="field">
+    <%= form.label :wash_hands %>
+    <%= form.check_box :wash_hands %>
+  </div>
+
+  <div class="field">
+    <%= form.label :urinal_cake %>
+    <%= form.check_box :urinal_cake %>
+  </div>
+
+  <div class="field">
+    <%= form.label :smoking %>
+    <%= form.check_box :smoking %>
+  </div>
+
+  <div class="field">
+    <%= form.label :dart_board %>
+    <%= form.check_box :dart_board %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

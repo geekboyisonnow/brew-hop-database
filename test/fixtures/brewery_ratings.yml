@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ipa: false
+  apa: false
+  ale: false
+  hefe: false
+  porter: false
+  stout: false
+  pale: false
+  blonde: false
+  pilsner: false
+  growler: false
+  crowler: false
+  rail: false
+
+two:
+  ipa: false
+  apa: false
+  ale: false
+  hefe: false
+  porter: false
+  stout: false
+  pale: false
+  blonde: false
+  pilsner: false
+  growler: false
+  crowler: false
+  rail: false

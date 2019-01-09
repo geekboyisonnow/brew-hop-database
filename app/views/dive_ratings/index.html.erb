@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Dive Ratings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Cd jukebox</th>
+      <th>Sweet caroline</th>
+      <th>Pickeled</th>
+      <th>Dollar bills</th>
+      <th>Writing wall</th>
+      <th>Mirror</th>
+      <th>Pbr</th>
+      <th>Domestic sign</th>
+      <th>Wash hands</th>
+      <th>Urinal cake</th>
+      <th>Smoking</th>
+      <th>Dart board</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @dive_ratings.each do |dive_rating| %>
+      <tr>
+        <td><%= dive_rating.cd_jukebox %></td>
+        <td><%= dive_rating.sweet_caroline %></td>
+        <td><%= dive_rating.pickeled %></td>
+        <td><%= dive_rating.dollar_bills %></td>
+        <td><%= dive_rating.writing_wall %></td>
+        <td><%= dive_rating.mirror %></td>
+        <td><%= dive_rating.pbr %></td>
+        <td><%= dive_rating.domestic_sign %></td>
+        <td><%= dive_rating.wash_hands %></td>
+        <td><%= dive_rating.urinal_cake %></td>
+        <td><%= dive_rating.smoking %></td>
+        <td><%= dive_rating.dart_board %></td>
+        <td><%= link_to 'Show', dive_rating %></td>
+        <td><%= link_to 'Edit', edit_dive_rating_path(dive_rating) %></td>
+        <td><%= link_to 'Destroy', dive_rating, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Dive Rating', new_dive_rating_path %>

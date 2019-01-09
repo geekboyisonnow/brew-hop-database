@@ -1,0 +1,77 @@
+<%= form_with(model: brewery_rating, local: true) do |form| %>
+  <% if brewery_rating.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(brewery_rating.errors.count, "error") %> prohibited this brewery_rating from being saved:</h2>
+
+      <ul>
+      <% brewery_rating.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :ipa %>
+    <%= form.check_box :ipa %>
+  </div>
+
+  <div class="field">
+    <%= form.label :apa %>
+    <%= form.check_box :apa %>
+  </div>
+
+  <div class="field">
+    <%= form.label :ale %>
+    <%= form.check_box :ale %>
+  </div>
+
+  <div class="field">
+    <%= form.label :hefe %>
+    <%= form.check_box :hefe %>
+  </div>
+
+  <div class="field">
+    <%= form.label :porter %>
+    <%= form.check_box :porter %>
+  </div>
+
+  <div class="field">
+    <%= form.label :stout %>
+    <%= form.check_box :stout %>
+  </div>
+
+  <div class="field">
+    <%= form.label :pale %>
+    <%= form.check_box :pale %>
+  </div>
+
+  <div class="field">
+    <%= form.label :blonde %>
+    <%= form.check_box :blonde %>
+  </div>
+
+  <div class="field">
+    <%= form.label :pilsner %>
+    <%= form.check_box :pilsner %>
+  </div>
+
+  <div class="field">
+    <%= form.label :growler %>
+    <%= form.check_box :growler %>
+  </div>
+
+  <div class="field">
+    <%= form.label :crowler %>
+    <%= form.check_box :crowler %>
+  </div>
+
+  <div class="field">
+    <%= form.label :rail %>
+    <%= form.check_box :rail %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
