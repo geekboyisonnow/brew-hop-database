@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>Bar</th>
       <th>Cd jukebox</th>
       <th>Sweet caroline</th>
       <th>Pickeled</th>
@@ -24,6 +25,11 @@
   <tbody>
     <% @dive_ratings.each do |dive_rating| %>
       <tr>
+        <% if dive_rating.bar %>
+          <td><%= dive_rating.bar.name %></td>
+        <% else %>
+          <td>UNKNOWN</td>
+        <% end %>
         <td><%= dive_rating.cd_jukebox %></td>
         <td><%= dive_rating.sweet_caroline %></td>
         <td><%= dive_rating.pickeled %></td>

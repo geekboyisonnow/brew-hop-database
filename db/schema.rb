@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_10_155720) do
+ActiveRecord::Schema.define(version: 2019_01_10_161414) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,7 +61,10 @@ ActiveRecord::Schema.define(version: 2019_01_10_155720) do
     t.boolean "dart_board"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "bar_id"
+    t.index ["bar_id"], name: "index_dive_ratings_on_bar_id"
   end
 
   add_foreign_key "brewery_ratings", "bars"
+  add_foreign_key "dive_ratings", "bars"
 end

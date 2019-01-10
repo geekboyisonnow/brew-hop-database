@@ -69,6 +69,6 @@ class DiveRatingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def dive_rating_params
-      params.require(:dive_rating).permit(:cd_jukebox, :sweet_caroline, :pickeled, :dollar_bills, :writing_wall, :mirror, :pbr, :domestic_sign, :wash_hands, :urinal_cake, :smoking, :dart_board)
+      params.require(:dive_rating).permit(:bar_id, :cd_jukebox, :sweet_caroline, :pickeled, :dollar_bills, :writing_wall, :mirror, :pbr, :domestic_sign, :wash_hands, :urinal_cake, :smoking, :dart_board)
     end
 end

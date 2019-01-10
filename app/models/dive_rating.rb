@@ -1,3 +1,3 @@
 class DiveRating < ApplicationRecord
-    belongs_to :bar_id, class_name: 'Bar', optional: true
+    belongs_to :bar
 end
