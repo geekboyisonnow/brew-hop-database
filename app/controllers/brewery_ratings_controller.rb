@@ -69,6 +69,6 @@ class BreweryRatingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def brewery_rating_params
-      params.require(:brewery_rating).permit(:ipa, :apa, :ale, :hefe, :porter, :stout, :pale, :blonde, :pilsner, :growler, :crowler, :rail)
+      params.require(:brewery_rating).permit(:bar_id, :ipa, :apa, :ale, :hefe, :porter, :stout, :pale, :blonde, :pilsner, :growler, :crowler, :rail)
     end
 end

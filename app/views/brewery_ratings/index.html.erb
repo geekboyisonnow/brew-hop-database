@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>Bar</th>
       <th>Ipa</th>
       <th>Apa</th>
       <th>Ale</th>
@@ -24,6 +25,11 @@
   <tbody>
     <% @brewery_ratings.each do |brewery_rating| %>
       <tr>
+        <% if brewery_rating.bar %>
+          <td><%= brewery_rating.bar.name %></td>
+        <% else %>
+          <td>UNKNOWN</td>
+        <% end %>
         <td><%= brewery_rating.ipa %></td>
         <td><%= brewery_rating.apa %></td>
         <td><%= brewery_rating.ale %></td>

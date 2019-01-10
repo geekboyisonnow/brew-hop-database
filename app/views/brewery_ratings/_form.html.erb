@@ -12,6 +12,11 @@
   <% end %>
 
   <div class="field">
+    <%= form.label :bar_id %>
+    <%= form.collection_select(:bar_id, Bar.all, :id, :name) %>
+  </div>
+
+  <div class="field">
     <%= form.label :ipa %>
     <%= form.check_box :ipa %>
   </div>
