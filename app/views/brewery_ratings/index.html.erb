@@ -26,9 +26,9 @@
     <% @brewery_ratings.each do |brewery_rating| %>
       <tr>
         <% if brewery_rating.bar %>
-          <td><%= brewery_rating.bar.name %></td>
+          <td><%= link_to brewery_rating.bar.name, edit_brewery_rating_path(brewery_rating) %></td>
         <% else %>
-          <td>UNKNOWN</td>
+          <td><%= link_to 'UNKNOWN', edit_brewery_rating_path(brewery_rating)=%></td>
         <% end %>
         <td><%= brewery_rating.ipa %></td>
         <td><%= brewery_rating.apa %></td>

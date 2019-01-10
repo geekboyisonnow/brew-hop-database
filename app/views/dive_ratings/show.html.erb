@@ -1,5 +1,11 @@
 <p id="notice"><%= notice %></p>
 
+<% if @dive_rating.bar %>
+  <h1><%= @dive_rating.bar.name %></h1>
+    <% else %>
+      <p>UNKNOWN</p>
+<% end %>
+
 <p>
   <strong>Cd jukebox:</strong>
   <%= @dive_rating.cd_jukebox %>

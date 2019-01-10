@@ -1,5 +1,11 @@
 <p id="notice"><%= notice %></p>
 
+<% if @brewery_rating.bar %>
+  <h1><%= @brewery_rating.bar.name %></h1>
+    <% else %>
+      <p>UNKNOWN</p>
+<% end %>
+
 <p>
   <strong>Ipa:</strong>
   <%= @brewery_rating.ipa %>

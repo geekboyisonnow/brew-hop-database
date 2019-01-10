@@ -26,7 +26,7 @@
     <% @dive_ratings.each do |dive_rating| %>
       <tr>
         <% if dive_rating.bar %>
-          <td><%= dive_rating.bar.name %></td>
+          <td><%= link_to dive_rating.bar.name, edit_dive_rating_path(dive_rating) %></td>
         <% else %>
           <td>UNKNOWN</td>
         <% end %>
