@@ -1,6 +1,8 @@
 class CreateBreweryRatings < ActiveRecord::Migration[5.2]
   def change
     create_table :brewery_ratings do |t|
+      t.reference :bar_id
+
       t.boolean :ipa
       t.boolean :apa
       t.boolean :ale

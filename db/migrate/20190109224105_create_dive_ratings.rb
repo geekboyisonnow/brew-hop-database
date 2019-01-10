@@ -1,6 +1,8 @@
 class CreateDiveRatings < ActiveRecord::Migration[5.2]
   def change
     create_table :dive_ratings do |t|
+      t.reference :bar_id
+
       t.boolean :cd_jukebox
       t.boolean :sweet_caroline
       t.boolean :pickeled

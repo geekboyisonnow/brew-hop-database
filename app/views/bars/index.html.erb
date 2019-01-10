@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>Name</th>
       <th>Location</th>
       <th>Latitude</th>
       <th>Longitude</th>
@@ -18,6 +19,7 @@
   <tbody>
     <% @bars.each do |bar| %>
       <tr>
+        <td><%= bar.name %></td>
         <td><%= bar.location %></td>
         <td><%= bar.latitude %></td>
         <td><%= bar.longitude %></td>
