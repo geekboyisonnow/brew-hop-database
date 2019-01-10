@@ -2,10 +2,11 @@
 
 <h1>Brewery Ratings</h1>
 
+
 <table>
   <thead>
     <tr>
-      <th>Bar</th>
+      <th>Bar Name</th>
       <th>Ipa</th>
       <th>Apa</th>
       <th>Ale</th>
@@ -29,7 +30,10 @@
           <td><%= link_to brewery_rating.bar.name, edit_brewery_rating_path(brewery_rating) %></td>
         <% else %>
           <td><%= link_to 'UNKNOWN', edit_brewery_rating_path(brewery_rating)=%></td>
+         
         <% end %>
+        
+        
         <td><%= brewery_rating.ipa %></td>
         <td><%= brewery_rating.apa %></td>
         <td><%= brewery_rating.ale %></td>
