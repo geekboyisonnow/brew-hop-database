@@ -6,7 +6,8 @@
   <thead>
     <tr>
       <th>Bar Name</th>
-      <th>Ratings Count</th>
+      <th>Brewery Ratings Count</th>
+      <th>Dive Bar Ratings Count</th>
       <th>Location / Address</th>
       <th>Latitude</th>
       <th>Longitude</th>
@@ -20,8 +21,14 @@
   <tbody>
     <% @bars.each do |bar| %>
       <tr>
-        <td><%= bar.name %></td>
+        <% if bar.name %>
+          <td><%= link_to bar.name, edit_bar_path(bar) %></td>
+        <% else %>
+          <td>UNKNOWN</td>
+        <% end %>
+        
         <td><%= bar.brewery_ratings.count %></td>
+        <td><%= bar.dive_ratings.count %></td>
         <td><%= bar.location %></td>
         <td><%= bar.latitude %></td>
         <td><%= bar.longitude %></td>
