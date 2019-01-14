@@ -4,6 +4,18 @@ class BarsController < ApplicationController
   # GET /bars
   # GET /bars.json
   def index
+
+    filter = params[:filter]
+
+    all_bars = Bar.all.order(:bar)
+
+    if filter
+      @bars = all_bars.
+      where("bar ?", "%{filter}")
+    else
+      @bars = all_bars
+    end
+
     @bars = Bar.all
   end
 

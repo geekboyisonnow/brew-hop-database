@@ -4,6 +4,18 @@ class BreweryRatingsController < ApplicationController
   # GET /brewery_ratings
   # GET /brewery_ratings.json
   def index
+
+    filter = params[:filter]
+
+    all_brewery_ratings = BreweryRating.all.order(:bar)
+
+    if filter
+      @brewery_ratings = all_brewery_ratings.
+      where("bar ?", "%{filter}")
+    else
+      @brewery_ratings = all_brewery_ratings
+    end
+
     @brewery_ratings = BreweryRating.all
   end
 

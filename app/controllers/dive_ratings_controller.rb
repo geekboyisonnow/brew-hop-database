@@ -4,6 +4,18 @@ class DiveRatingsController < ApplicationController
   # GET /dive_ratings
   # GET /dive_ratings.json
   def index
+
+    filter = params[:filter]
+
+    all_dive_ratings = DiveRating.all.order(:bar)
+
+    if filter
+      @dive_ratings = all_dive_ratings.
+      where("bar ?", "%{filter}")
+    else
+      @dive_ratings = all_dive_ratings
+    end
+
     @dive_ratings = DiveRating.all
   end
 
