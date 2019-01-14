@@ -17,7 +17,28 @@ class BarsController < ApplicationController
     end
 
     @bars = Bar.all
-  end
+
+  #   render json: @bars.map { |bar|
+  #   {
+  #     name: bar.name,
+  #     kind_of_bar: bar.kind,
+  #     location: bar.location,
+  #     latitude: bar.latitude,
+  #     longitude: bar.longitude,
+  #     phone_number: bar.phone,
+  #     hours: bar.hours
+  #   }
+  # }
+  #   render json: @brewery_ratings.map { |brewery_rating|
+  #   {
+  #     brewery_ratings: brewery_rating.ids
+  #   }
+  # }
+end  
+
+
+
+
 
   # GET /bars/1
   # GET /bars/1.json
