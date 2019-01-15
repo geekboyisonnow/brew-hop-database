@@ -7,7 +7,7 @@ import Tabs from './Tabs';
 import Map from './Map';
 import Breweries from './Breweries';
 import Dives from './Dives';
-import Pubs from './Pubs'
+import Crawl from './Crawl'
 import About from './About';
 import Footer from './Footer';
 import './App.css';
@@ -24,6 +24,7 @@ class App extends Component {
         <Route path="/" exact component={Home} />
         <Route path="/breweries" component={Breweries} />
         <Route path="/dives" component={Dives} />
+        <Route path="/crawl" component={Crawl} />
         <Footer />
         
         
