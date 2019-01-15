@@ -58,8 +58,7 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem "awesome_print", "~> 1.8"
-
+gem "awesome_print"
 gem "rack-cors", "~> 1.0"
 
 gem "geocoder", "~> 1.5"
