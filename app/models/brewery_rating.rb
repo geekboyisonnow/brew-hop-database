@@ -1,7 +1,7 @@
 class BreweryRating < ApplicationRecord
   belongs_to :bar
 
-  def overall_rating
+  def stars
     [
         ipa,
         apa,
@@ -15,6 +15,6 @@ class BreweryRating < ApplicationRecord
         growler,
         crowler,
         rail
-    ].count(true)
+    ].count(true) / 3.0
   end
 end
