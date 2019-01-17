@@ -17,10 +17,10 @@ class App extends Component {
     return (
       <Router>
       <div class="body">
-        <Header />
-        <Search />
-        <Tabs />
-        <Map />
+        <Route path="/" exact component={Header} />
+        <Route path="/" exact component={Search} />
+        <Route path="/" exact component={Tabs} />
+        <Route path="/" exact component={Map} />
         <Route path="/" exact component={Home} />
         <Route path="/breweries" component={Breweries} />
         <Route path="/dives" component={Dives} />

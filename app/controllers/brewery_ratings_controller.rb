@@ -41,7 +41,7 @@ class BreweryRatingsController < ApplicationController
     respond_to do |format|
       if @brewery_rating.save
         format.html { redirect_to @brewery_rating, notice: 'Brewery rating was successfully created.' }
-        format.json { render :show, status: :created, location: @brewery_rating }
+        format.json { render :show, status: :created, address: @brewery_rating }
       else
         format.html { render :new }
         format.json { render json: @brewery_rating.errors, status: :unprocessable_entity }
@@ -55,7 +55,7 @@ class BreweryRatingsController < ApplicationController
     respond_to do |format|
       if @brewery_rating.update(brewery_rating_params)
         format.html { redirect_to @brewery_rating, notice: 'Brewery rating was successfully updated.' }
-        format.json { render :show, status: :ok, location: @brewery_rating }
+        format.json { render :show, status: :ok, address: @brewery_rating }
       else
         format.html { render :edit }
         format.json { render json: @brewery_rating.errors, status: :unprocessable_entity }

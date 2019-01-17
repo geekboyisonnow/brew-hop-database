@@ -41,7 +41,7 @@ class DiveRatingsController < ApplicationController
     respond_to do |format|
       if @dive_rating.save
         format.html { redirect_to @dive_rating, notice: 'Dive rating was successfully created.' }
-        format.json { render :show, status: :created, location: @dive_rating }
+        format.json { render :show, status: :created, address: @dive_rating }
       else
         format.html { render :new }
         format.json { render json: @dive_rating.errors, status: :unprocessable_entity }
@@ -55,7 +55,7 @@ class DiveRatingsController < ApplicationController
     respond_to do |format|
       if @dive_rating.update(dive_rating_params)
         format.html { redirect_to @dive_rating, notice: 'Dive rating was successfully updated.' }
-        format.json { render :show, status: :ok, location: @dive_rating }
+        format.json { render :show, status: :ok, address: @dive_rating }
       else
         format.html { render :edit }
         format.json { render json: @dive_rating.errors, status: :unprocessable_entity }

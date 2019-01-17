@@ -7,7 +7,23 @@ class BarsController < ApplicationController
 
     filter = params[:filter]
 
-    all_bars = Bar.all.order(:bar)
+    # get all the bars
+    all_bars = Bar.all.order(:bar) #Kind?
+
+    # make some json to return
+    render json: {
+      bars: all_bars.map do | bar |
+        {
+          id: bar.id,
+          bar_name: bar.name,
+          address: bar.location,
+          rating: bar.brewery_rating, #Need One Rating like overall_rating
+          hours: bar.hours,
+          latitude: bar.latitude,
+          longitude: bar.longitude,
+          type_of_bar: bar.kind
+        }
+    }
 
     if filter
       @bars = all_bars.

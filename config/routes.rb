@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   resources :brewery_ratings
   resources :bars
   
+  #   path                # controller name/method name
+  get '/api/bars', to: 'api/bars#index'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   if Rails.env.production?
     CLIENT_HTML = File.read(Rails.root.join('public/index.html'))
