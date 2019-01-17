@@ -6,10 +6,10 @@ import Logo from './Logo-Circle-4.png';
 class Header extends Component {
   render() {
     return (
-      <div class="header">
+      <div className="header">
       
-      <img src={`${Logo}`} class="logo" alt=""/>
-      <Link to="/" class="brew-text">Brew Hop!</Link>      
+      <img src={`${Logo}`} className="logo" alt=""/>
+      <Link to="/" className="brew-text">Brew Hop!</Link>      
       </div>
     )
   }

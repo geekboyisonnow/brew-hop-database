@@ -17,7 +17,6 @@ html {
   width: 100%;
 }
 
-
 .brew-text {
   margin-right: 30px;
 }
@@ -32,32 +31,34 @@ html {
 }
 
 .body {
-  min-height: 80vh;
+  min-height: 100%;
   width: auto;
   display: flex;
   flex-direction: column;
   margin: 0;
   font-size: 18px;
   font-family: 'Roboto', sans-serif;
-  /* background-color: rgb(230, 230, 230); */
   background-image: linear-gradient(darkgrey, rgb(230, 230, 230));
   text-align: center;
 }
 
-.body img{
-  margin: 0px;
+.map {
+  height: 250px;
+  width: 350px;
+  margin: 0;
+  padding: 0;
 }
 
 .search {
   display: flex;
   justify-content: space-evenly;
   min-height: 5vh;
-  width: auto;
+  width: 100%;
 }
 
 #input {
   min-height: 2vh;
-  width: auto;
+  min-width: 70%;
   margin: 4px 4px;
   padding: 4px 4px;
   border: 1px solid darkslategray;
@@ -74,12 +75,12 @@ html {
 
 #content {
   display: flex;
-  justify-content: space-between;
-  padding-right: 30px;
-  padding-left: 30px;
+  justify-content: space-around;
+  padding: 5px 5px;
   background-color: whitesmoke;
-  margin: 5px 5px;
-  min-height: 38vh;
+  margin: 0px 10px;
+  margin-top: 10px;
+  min-height: 35vh;
   }
 
 .bars {
@@ -88,15 +89,12 @@ html {
   padding-bottom: 2px;
   text-align: left;
   list-style: none;
-  font-size: 20px;
+  font-size: 14px;
   }
 
 .list {
   padding-top: 1px;
   padding-bottom: 1px;
-  /* padding-right: 5px;
-  padding-top: 1px; */
-
 }
 
 a {
@@ -126,14 +124,14 @@ a {
 }
 
 .dreamlight {
-  padding: 1px;
+  padding: 2px;
   /* background-color: darkgreen; */
 }
 
  .footer {
   padding: 0px;
   /* position: fixed; */
-  min-height: 8vh;
+  min-height: 9vh;
   width: auto;
   margin: 0;
   background-image: linear-gradient(green, rgb(0, 71, 0));

@@ -16,19 +16,18 @@ class App extends Component {
   render() {
     return (
       <Router>
-      <div class="body">
-        <Route path="/" exact component={Header} />
-        <Route path="/" exact component={Search} />
-        <Route path="/" exact component={Tabs} />
-        <Route path="/" exact component={Map} />
+      <div className="body">
+        <Header />
+        <Search />
+        <Tabs />
+        <div className="map">
+        <Map />
+        </div>
         <Route path="/" exact component={Home} />
         <Route path="/breweries" component={Breweries} />
         <Route path="/dives" component={Dives} />
         <Route path="/crawl" component={Crawl} />
         <Footer />
-        
-        
-        
       </div>
       </Router>
     );

@@ -11,8 +11,8 @@ class Tabs extends Component {
     return (
       <div class="tab">
     <Link to="/breweries"><button><strong>breweries</strong></button></Link>
-    <button class="tablinks" ><Link to="/dives"><strong>dive bars</strong></Link></button>
-    <button class="tablinks" ><Link to="/crawl"><strong>pub crawl</strong></Link></button>
+    <Link to="/dives"><button class="tablinks" ><strong>dive bars</strong></button></Link>
+    <Link to="/crawl"><button class="tablinks" ><strong>pub crawl</strong></button></Link>
      
       </div>
     )

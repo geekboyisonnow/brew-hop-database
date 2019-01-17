@@ -50,16 +50,16 @@ render() {
 return (
 
     <div id="content">
-        <div class="bars">
-            <div class="list"><strong><u>Breweries</u></strong></div>
-            <div class="list">
+        <div className="bars">
+            <div className="list"><strong><u>Breweries</u></strong></div>
+            <div className="list">
             {this.state.locations.map(location => 
             <div key={location.id}>{location.bar_name}</div>)}
             </div>
         </div>
-        <div class="bars">
-            <div class="list"><strong><u>Rating</u></strong></div>
-            <div class="list">
+        <div className="bars">
+            <div className="list"><strong><u>Rating</u></strong></div>
+            <div className="list">
             {this.state.locations.map(location => 
             <div key={location.id}>{location.overall_rating}</div>)}
             </div>
