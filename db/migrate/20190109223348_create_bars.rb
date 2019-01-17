@@ -9,9 +9,6 @@ class CreateBars < ActiveRecord::Migration[5.2]
       t.string :hours
       t.string :kind
 
-      t.reference :brewery_ratings
-      t.reference :dive_ratings
-
       t.timestamps
     end
   end

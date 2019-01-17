@@ -1,7 +1,7 @@
 class CreateDiveRatings < ActiveRecord::Migration[5.2]
   def change
     create_table :dive_ratings do |t|
-      t.reference :bars
+      t.references :bar, foreign_key: true
 
       t.boolean :cd_jukebox
       t.boolean :sweet_caroline

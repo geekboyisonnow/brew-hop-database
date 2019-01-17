@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 2019_01_15_175651) do
   end
 
   create_table "brewery_ratings", force: :cascade do |t|
+    t.bigint "bar_id"
     t.boolean "ipa"
     t.boolean "apa"
     t.boolean "ale"
@@ -43,11 +44,11 @@ ActiveRecord::Schema.define(version: 2019_01_15_175651) do
     t.boolean "rail"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "bar_id"
     t.index ["bar_id"], name: "index_brewery_ratings_on_bar_id"
   end
 
   create_table "dive_ratings", force: :cascade do |t|
+    t.bigint "bar_id"
     t.boolean "cd_jukebox"
     t.boolean "sweet_caroline"
     t.boolean "pickeled"
@@ -62,7 +63,6 @@ ActiveRecord::Schema.define(version: 2019_01_15_175651) do
     t.boolean "dart_board"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "bar_id"
     t.index ["bar_id"], name: "index_dive_ratings_on_bar_id"
   end
 
