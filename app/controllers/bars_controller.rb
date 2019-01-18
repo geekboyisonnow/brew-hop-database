@@ -5,35 +5,35 @@ class BarsController < ApplicationController
   # GET /bars.json
   def index
 
-    filter = params[:filter]
+    # filter = params[:filter]
 
-    # get all the bars
-    all_bars = Bar.all.order(:kind) #Kind?
+    # # get all the bars
+    # all_bars = Bar.all.order(:kind) #Kind?
 
-    # make some json to return
-    render json: {
-      bars: all_bars.map do | bar |
-        {
-          id: bar.id,
-          bar_name: bar.name,
-          address: bar.location,
-          rating: bar.brewery_rating_ids, #Need One Rating like overall_rating
-          hours: bar.hours,
-          latitude: bar.latitude,
-          longitude: bar.longitude,
-          type_of_bar: bar.kind
-        }
-      end
-    }
+    # # make some json to return
+    # render json: {
+    #   bars: all_bars.map do | bar |
+    #     {
+    #       id: bar.id,
+    #       bar_name: bar.name,
+    #       address: bar.location,
+    #       rating: bar.bar_star, #Need One Rating like overall_rating
+    #       hours: bar.hours,
+    #       latitude: bar.latitude,
+    #       longitude: bar.longitude,
+    #       type_of_bar: bar.kind
+    #     }
+    #   end
+    # }
     
     
 
-    if filter
-      @bars = all_bars.
-      where("bar ?", "%{filter}")
-    else
-      @bars = all_bars
-    end
+    # if filter
+    #   @bars = all_bars.
+    #   where("bar ?", "%{filter}")
+    # else
+    #   @bars = all_bars
+    # end
 
     @bars = Bar.all
   

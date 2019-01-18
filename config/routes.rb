@@ -4,6 +4,6 @@ Rails.application.routes.draw do
   resources :bars
   
   #   path                # controller name/method name
-  get '/bars', to: 'bars#index'
+  #get '/api/bars', to: 'api/bars#index'
 
 end
