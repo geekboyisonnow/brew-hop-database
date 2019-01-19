@@ -86,7 +86,7 @@ class Dives extends Component {
                 <div className="list"><strong><u>Rating</u></strong></div>
                 <div className="list">
                 {this.state.bars.map(bar => 
-                <div key={bar.id}>{bar.overall_rating}</div>)}
+                <div key={bar.id}>{bar.rating}</div>)}
                 </div>
             </div>
         </div>

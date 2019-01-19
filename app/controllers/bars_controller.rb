@@ -101,6 +101,6 @@ class BarsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bar_params
-      params.require(:bar).permit(:name, :location, :latitude, :longitude, :phone, :hours, :kind)
+      params.require(:bar).permit(:name, :rating, :location, :latitude, :longitude, :phone, :hours, :kind)
     end
 end

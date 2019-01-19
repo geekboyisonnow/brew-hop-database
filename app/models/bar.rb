@@ -23,11 +23,11 @@ class Bar < ApplicationRecord
 
     dive_ratings.map { |rating| rating.stars }.sum / dive_ratings.size
   end
-  def bar_star
-    if brewery_stars
-      brewery_stars
-    else
-      dive_stars
-    end 
-  end
+  # def bar_star
+  #   if stars
+  #     brewery_stars
+  #   else
+  #     dive_stars
+  #   end 
+  # end
 end

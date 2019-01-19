@@ -11,6 +11,8 @@ import Crawl from './Crawl'
 import About from './About';
 import Footer from './Footer';
 import './App.css';
+import 'mapbox-gl/dist/mapbox-gl.css';
+
 
 class App extends Component {
   render() {
@@ -20,13 +22,15 @@ class App extends Component {
         <Header />
         <Search />
         <Tabs />
-        <div className="map">
-        <Map />
-        </div>
+        
         <Route path="/" exact component={Home} />
         <Route path="/breweries" component={Breweries} />
         <Route path="/dives" component={Dives} />
         <Route path="/crawl" component={Crawl} />
+        
+        <div className="map">
+        <Map />
+        </div>
         <Footer />
       </div>
       </Router>

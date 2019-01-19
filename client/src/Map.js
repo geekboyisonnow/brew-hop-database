@@ -1,24 +1,25 @@
-import './App.css';
-import pic from './map-example.PNG'
-import React, {Component} from 'react';
+import React, {Component} from 'react'
 import {render} from 'react-dom';
-import MapGL, {Marker, Popup, NavigationControl} from 'react-map-gl';
-
-
-import BarPin from './bar-pin.png';
-// import barInfo from './bar-info';
+import './App.css';
+import MapGL, { Marker, Popup, NavigationControl } from 'react-map-gl'
+import userPin from './bar-pin.png'
+// import locationInfo from './location-info'
 // import ControlPanel from './control-panel';
 // import CITIES from '../../data/cities.json';
 
 const TOKEN = ''; // Set your mapbox token here
 
-
-
+const navStyle = {
+  position: 'absolute',
+  top: 0,
+  left: 0,
+  padding: '10px'
+}
 class Map extends Component {
-
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
+      popupInfo: null,
       viewport: {
         latitude: 27.7676,
         longitude: -82.6403,
@@ -29,65 +30,63 @@ class Map extends Component {
     }
   }
 
-  _updateViewport = (viewport) => {
-    this.setState({ viewport });
+  _updateViewport = newViewport => {
+    this.setState({ viewport: newViewport })
   }
 
-  _renderBarMarker = (bar, index) => {
+  renderPopup = () => {
+    const popupInfo = this.state.popupInfo
+
+    if (!popupInfo) {
+      return
+    }
+
     return (
-      <Marker 
-        key={`marker-${index}`}
-        longitude={bar.longitude}
-        latitude={bar.latitude} >
-        <BarPin size={20} onClick={() => this.setState({popupInfo: bar})} />
-        <img src={BarPin}/>
-      </Marker>
-    );
-  }
-
-  _renderPopup() {
-    const {popupInfo} = this.state;
-
-    return popupInfo && (
-      <Popup tipSize={5}
+      <Popup
+        tipSize={5}
         anchor="top"
         longitude={popupInfo.longitude}
         latitude={popupInfo.latitude}
         closeOnClick={false}
-        onClose={() => this.setState({popupInfo: null})} >
-        {/* <barInfo info={popupInfo} /> */}
+        onClose={() => {
+          this.props.onClickMarker(null)
+          this.setState({ popupInfo: null })
+        }}
+      >
+        <div>
+          <p>{popupInfo.bar_name}</p>
+          <p>{popupInfo.address}</p>
+          <p>{popupInfo.hours}</p>
+        </div>
       </Popup>
-    );
+    )
+  }
+
+  renderUserMarker = () => {
+    if (!this.props.userLocation) {
+      return
+    }
+
+    return (
+      <Marker
+        longitude={this.props.userLocation.longitude}
+        latitude={this.props.userLocation.latitude}
+        offsetTop={-64}
+        offsetLeft={-32}
+      >
+        <img width="64" height="64" src={userPin} />
+      </Marker>
+    )
+  }
+
+  _userClicked = event => {
+    console.log('The user clicked at', event.lngLat)
   }
 
   render() {
-    const {viewport} = this.state;
+    const { viewport } = this.state
 
-    const navStyle = {
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      padding: '10px'
-    }
     
-    const BARS = [
-      {
-        "id":13,"bar_name":"3 Daughters","address":"222 22nd St S, St. Petersburg, FL 33712","rating":[],"hours":"12PM - 3AM","latitude":"27.7689902244898","longitude":"-82.6629721020408","type_of_bar":"Brewery Bar"
-      },
-      
-      {
-        "id":15,"bar_name":"Cage Brewing","address":"2001 1st Ave S, St. Petersburg, FL 33712","rating":[1],"hours":"1PM - 3AM","latitude":"27.770292","longitude":"-82.660409","type_of_bar":"Brewery Bar"
-      },
-      
-      {
-        "id":16,"bar_name":"Pinellas Ale Works","address":"1962 1st Ave S, St. Petersburg, FL 33712","rating":[],"hours":"10AM - 3AM","latitude":"27.7701286326531","longitude":"-82.6597328979592","type_of_bar":"Brewery Bar"
-      },
-      
-      {
-        "id":17,"bar_name":"Flying Boat Brewing Company","address":"1776 11th Ave N, St. Petersburg, FL 33713","rating":[],"hours":"1PM - 3AM","latitude":"27.7828457080974","longitude":"-82.657199693093","type_of_bar":"Brewery Bar"
-      }
-
-    ]
 
     return (
       <MapGL
@@ -97,20 +96,37 @@ class Map extends Component {
         mapStyle="mapbox://styles/mapbox/dark-v9"
         mapboxApiAccessToken="pk.eyJ1IjoiZ2Vla2JveWlzb25ub3ciLCJhIjoiY2pyMHljMTMzMHU4ZTN5bHNkNWZzbGdrYiJ9.z13l-C7XioaNx3zQ7igC5Q"
         onViewportChange={this._updateViewport}
-        >
-
+        onClick={this._userClicked}
+      >
         <div className="nav" style={navStyle}>
-          <NavigationControl onViewportChange={this._updateViewport} 
-          />
+          <NavigationControl onViewportChange={this._updateViewport} />
         </div>
-        {BARS.map(bar => 
-        <Marker 
-         key={bar.id}
-         longitude={bar.longitude}
-         latitude={bar.latitude} >
-         <img width={32} src={BarPin}/>
-        </Marker> 
-        )}
+
+        {this.renderPopup()}
+
+        {this.renderUserMarker()}
+
+        {this.props.bars.map(bar => {
+          return (
+            <Marker
+              key={bar.id}
+              longitude={bar.longitude}
+              latitude={bar.latitude}
+              offsetTop={-64}
+              offsetLeft={-32}
+            >
+              <img
+                onClick={() => {
+                  this.props.onClickMarker(bar)
+                  this.setState({ popupInfo: bar })
+                }}
+                width="64"
+                height="64"
+                src={userPin}
+              />
+            </Marker>
+          )
+        })}
       </MapGL>
     )
   }
