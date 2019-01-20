@@ -3,7 +3,7 @@ class BarsController < ApplicationController
 
   # GET /bars
   # GET /bars.json
-  def index
+  # def index
 
     # filter = params[:filter]
 
@@ -35,10 +35,44 @@ class BarsController < ApplicationController
     #   @bars = all_bars
     # end
 
-    @bars = Bar.all
+    def index
+      @bars = Bar.all
+      latitude = params[:latitude]
+      longitude = params[:longitude]
+      name = params[:name]
+      address = params[:location]
+      phone = params[:phone]
+      rating = params[:rating]
+      hours = params[:hours]
+      kind = params[:kind]
   
-  end  
+      if latitude && longitude
+        all_the_bars = Bar.near([latitude, longitude])
+      else
+        # get all the locations
+        all_the_bars = Bar.all
+      end
+  
+      # make some json to return
+      render json: {
+          bars: all_the_bars.map do | bar |
+            {
+              id: bar.id,
+              name: bar.name,
+              address: bar.location,
+              rating: bar.rating, #Need One Rating like overall_rating
+              hours: bar.hours,
+              latitude: bar.latitude,
+              longitude: bar.longitude,
+              kind: bar.kind
+            }
+          end
+        end
+      } 
+    end
+  end
 
+      
   # GET /bars/1
   # GET /bars/1.json
   def show
@@ -103,4 +137,5 @@ class BarsController < ApplicationController
     def bar_params
       params.require(:bar).permit(:name, :rating, :location, :latitude, :longitude, :phone, :hours, :kind)
     end
+  end
 end

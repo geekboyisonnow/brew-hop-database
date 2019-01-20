@@ -36,7 +36,7 @@ class Dives extends Component {
                 latitude: position.coords.latitude,
                 longitude: position.coords.longitude
               },
-              url: `/api/locations?latitude=${position.coords.latitude}&longitude=${
+              url: `/bars?latitude=${position.coords.latitude}&longitude=${
                 position.coords.longitude
               }`
             },
