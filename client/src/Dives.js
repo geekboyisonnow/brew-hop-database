@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import axios from 'axios'
 import './App.css';
 
-
 class Dives extends Component {
     constructor(props) {
         super(props)
@@ -69,32 +68,35 @@ class Dives extends Component {
         this.setState({ selectedLocation: location })
       }
     
-      render() {
-        return (
-    
-        <div id="content">
-            <div className="bars">
-                <div className="list"><strong><u>Dives</u></strong></div>
-                <div className="list">
-                {this.state.bars.map(bar => 
-                <div key={bar.id}>
-                {bar.name}
-                </div>)}
+    render() {
+        
+      if (this.state.data) {
+          let diveBarData = this.state.data.map(function (bar){
+              return (
+                <div id="content">
+                  <div className="bars">
+                    <div className="list"><strong><u>Dives</u></strong></div>
+                  <div className="list">
+                  {this.state.bars.map(bar => 
+                  <div key={bar.id}>
+                  {bar.name}
+                  </div>)}
+                  </div>
                 </div>
-            </div>
-            <div className="bars">
-                <div className="list"><strong><u>Rating</u></strong></div>
-                <div className="list">
-                {this.state.bars.map(bar => 
-                <div key={bar.id}>{bar.rating}</div>)}
+                <div className="bars">
+                  <div className="list"><strong><u>Rating</u></strong></div>
+                  <div className="list">
+                  {this.state.bars.map(bar => 
+                  <div key={bar.id}>{bar.rating}</div>)}
                 </div>
-            </div>
-        </div>
+                </div>
+                </div>
+              );
+            }
+          );
+        }
+      }
+    }
     
-    )
   
-}
-}
-
 export default Dives;
-

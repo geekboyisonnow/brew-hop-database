@@ -12,6 +12,7 @@ import About from './About';
 import Footer from './Footer';
 import './App.css';
 import 'mapbox-gl/dist/mapbox-gl.css';
+import StaticMap from './map-example.PNG'
 
 
 class App extends Component {
@@ -23,14 +24,16 @@ class App extends Component {
         <Search />
         <Tabs />
         
+        <img src={StaticMap} height="250px"/>
+
         <Route path="/" exact component={Home} />
         <Route path="/breweries" component={Breweries} />
         <Route path="/dives" component={Dives} />
         <Route path="/crawl" component={Crawl} />
         
-        <div className="map">
+        {/* <div className="map">
         <Map />
-        </div>
+        </div> */}
         <Footer />
       </div>
       </Router>
