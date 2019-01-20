@@ -86,8 +86,6 @@ class Map extends Component {
   render() {
     const { viewport } = this.state
 
-    
-
     return (
       <MapGL
         {...viewport}
