@@ -3,8 +3,8 @@ class BarsController < ApplicationController
 
   # GET /bars
   # GET /bars.json
-  # def index
-
+  def index
+    @bars = Bar.all
     # filter = params[:filter]
 
     # # get all the bars
@@ -17,7 +17,7 @@ class BarsController < ApplicationController
     #       id: bar.id,
     #       bar_name: bar.name,
     #       address: bar.location,
-    #       rating: bar.bar_star, #Need One Rating like overall_rating
+    #       rating: bar.rating, 
     #       hours: bar.hours,
     #       latitude: bar.latitude,
     #       longitude: bar.longitude,
@@ -25,6 +25,7 @@ class BarsController < ApplicationController
     #     }
     #   end
     # }
+  end
     
     
 
@@ -35,42 +36,85 @@ class BarsController < ApplicationController
     #   @bars = all_bars
     # end
 
-    def index
-      @bars = Bar.all
-      latitude = params[:latitude]
-      longitude = params[:longitude]
-      name = params[:name]
-      address = params[:location]
-      phone = params[:phone]
-      rating = params[:rating]
-      hours = params[:hours]
-      kind = params[:kind]
+    # def index
+    #   @bars = Bar.all
+      # latitude = params[:latitude]
+      # longitude = params[:longitude]
+      # name = params[:name]
+      # address = params[:location]
+      # phone = params[:phone]
+      # rating = params[:rating]
+      # hours = params[:hours]
+      # kind = params[:kind]
   
-      if latitude && longitude
-        all_the_bars = Bar.near([latitude, longitude])
-      else
-        # get all the locations
-        all_the_bars = Bar.all
-      end
+      # if latitude && longitude
+      #   all_the_bars = Bar.near([latitude, longitude])
+      # else
+      #   # get all the locations
+      #   all_the_bars = Bar.all
+      # end
   
-      # make some json to return
-      render json: {
-          bars: all_the_bars.map do | bar |
-            {
-              id: bar.id,
-              name: bar.name,
-              address: bar.location,
-              rating: bar.rating, #Need One Rating like overall_rating
-              hours: bar.hours,
-              latitude: bar.latitude,
-              longitude: bar.longitude,
-              kind: bar.kind
-            }
-          end
-        end
-      } 
-    end
-  end
+      # # make some json to return
+      # render json: {
+      #     bars: all_the_bars.map do | bar |
+      #       {
+      #         id: bar.id,
+      #         name: bar.name,
+      #         address: bar.location,
+      #         rating: bar.rating, #Need One Rating like overall_rating
+      #         hours: bar.hours,
+      #         latitude: bar.latitude,
+      #         longitude: bar.longitude,
+      #         kind: bar.kind
+      #       }
+      #     end
+      #   } 
+    # end
+
+
+
+    # def api_index
+    #   @bars = Bar.all
+    #   latitude = params[:latitude]
+    #   longitude = params[:longitude]
+    #   name = params[:name]
+    #   address = params[:location]
+    #   phone = params[:phone]
+    #   rating = params[:rating]
+    #   hours = params[:hours]
+    #   kind = params[:kind]
+  
+    #   if latitude && longitude
+    #     all_the_bars = Bar.near([latitude, longitude])
+    #   else
+    #     # get all the locations
+    #     all_the_bars = Bar.all
+    #   end
+  
+    #   # make some json to return
+    #   render json: {
+    #       bars: all_the_bars.map do | bar |
+    #         {
+    #           id: bar.id,
+    #           name: bar.name,
+    #           address: bar.location,
+    #           rating: bar.rating, #Need One Rating like overall_rating
+    #           hours: bar.hours,
+    #           latitude: bar.latitude,
+    #           longitude: bar.longitude,
+    #           kind: bar.kind
+    #         }
+    #       end
+    #     } 
+    # end
+
+
+
+
+
+
+    
+  
 
       
   # GET /bars/1
@@ -137,5 +181,4 @@ class BarsController < ApplicationController
     def bar_params
       params.require(:bar).permit(:name, :rating, :location, :latitude, :longitude, :phone, :hours, :kind)
     end
-  end
 end

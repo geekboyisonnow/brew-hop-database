@@ -21,6 +21,13 @@ html {
   margin-right: 30px;
 }
 
+.BigLogo img{
+  display: flex;
+  padding-left: 65px;
+  height: 275px;
+  width: auto;
+}
+
 .logo {
   padding: 2px;
   margin-left: 5px;
@@ -44,7 +51,7 @@ html {
 
 .map {
   height: 250px;
-  width: 350px;
+  width: 450px;
   margin: 0;
   padding: 0;
 }

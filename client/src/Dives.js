@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import axios from 'axios'
+import Logo from './Logo-Circle-4.png'
 import './App.css';
 
 class Dives extends Component {
@@ -8,7 +8,7 @@ class Dives extends Component {
         super(props)
 
         this.state = {
-            url: '/bars',
+            url: '/bar_url',
             bars: [],
             userLocation: null,
             selectedLocation: null
@@ -18,6 +18,7 @@ class Dives extends Component {
     
     getBars = () => {
         axios.get(this.state.url).then(response => {
+          // console.log(response.data)
             this.setState({
                 bars: response.data.bars
             })
@@ -69,34 +70,45 @@ class Dives extends Component {
       }
     
     render() {
-        
-      if (this.state.data) {
-          let diveBarData = this.state.data.map(function (bar){
+      if (!this.state.bars) {
+        // console.log('no data')
+      return <div className="BigLogo"><img src={`${Logo}`} className="logo" alt=""/></div>
+      } else {
+        // console.log('has data')
+        // console.log(this.state.bars)
+        return (
+       // if (!this.state.bars) {
+          this.state.bars.map(bar => {
+            // console.log(this.state.bars)
               return (
                 <div id="content">
                   <div className="bars">
                     <div className="list"><strong><u>Dives</u></strong></div>
                   <div className="list">
-                  {this.state.bars.map(bar => 
-                  <div key={bar.id}>
-                  {bar.name}
-                  </div>)}
+                  {this.state.bars.map(bar => {
+                    return (
+                      <div key={bar.id}>{bar.name}</div>
+                    )
+                    })
+                  }
                   </div>
                 </div>
                 <div className="bars">
                   <div className="list"><strong><u>Rating</u></strong></div>
                   <div className="list">
-                  {this.state.bars.map(bar => 
-                  <div key={bar.id}>{bar.rating}</div>)}
+                  {this.state.bars.map(bar => {
+                    return (
+                      <div key={bar.id}>{bar.rating}</div>
+                    )
+                    })
+                  }
                 </div>
                 </div>
                 </div>
               );
             }
-          );
-        }
-      }
+          ))}
     }
-    
+  } 
   
 export default Dives;

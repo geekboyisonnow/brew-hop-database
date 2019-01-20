@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import Tabs from './Tabs'
 import './App.css';
 
 class Crawl extends Component {
