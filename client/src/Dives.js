@@ -8,7 +8,7 @@ class Dives extends Component {
         super(props)
 
         this.state = {
-            url: '/bar_url',
+            url: '/bars',
             bars: [],
             userLocation: null,
             selectedLocation: null
@@ -72,7 +72,15 @@ class Dives extends Component {
     render() {
       if (!this.state.bars) {
         // console.log('no data')
-      return <div className="BigLogo"><img src={`${Logo}`} className="logo" alt=""/></div>
+      return (
+        <div id="content">
+          
+            <p>Dive Bars</p>
+            <p>Should Be Dynamically</p>
+            <p>Listed Here!!!</p>
+          
+        </div>
+        )
       } else {
         // console.log('has data')
         // console.log(this.state.bars)
@@ -112,3 +120,5 @@ class Dives extends Component {
   } 
   
 export default Dives;
+
+{/* <div className="BigLogo"><img src={`${Logo}`} className="logo" alt=""/></div> */}
