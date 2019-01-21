@@ -5,6 +5,11 @@ class BarsController < ApplicationController
   # GET /bars.json
   def index
     @bars = Bar.all
+
+    if params[:kind]
+      @bars = @bars.where(kind: params[:kind])
+    end
+
     # filter = params[:filter]
   end
     

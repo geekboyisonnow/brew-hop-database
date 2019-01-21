@@ -24,16 +24,12 @@ class App extends Component {
         <Search />
         <Tabs />
         
-        <img className="map" src={StaticMap} height="250px" alt="Static Map"/>
 
         <Route path="/" exact component={Home} />
         <Route path="/breweries" component={Breweries} />
         <Route path="/dives" component={Dives} />
         <Route path="/crawl" component={Crawl} />
-        
-        {/* <div className="map">
-        <Map />
-        </div> */}
+
         <Footer />
       </div>
       </Router>

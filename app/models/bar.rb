@@ -6,6 +6,14 @@ class Bar < ApplicationRecord
   geocoded_by :location
   after_validation :geocode
 
+  def stars
+    if kind == "dive"
+      dive_stars
+    else
+      brewery_stars
+    end
+  end
+
   # Brewery stars is computed by taking all of the ratings for all of the brewery ratings, adding them up, and dividing by the size
   # This gives us an average of all the brewery rating stars
   def brewery_stars
