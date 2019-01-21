@@ -50,8 +50,8 @@ html {
 }
 
 .map {
-  height: 500px;
-  width: 500px;
+  height: 300px;
+  width: 300px;
   margin: 0;
   padding: 0;
 }
@@ -83,7 +83,6 @@ html {
 
 #content {
   display: flex;
-  flex-direction: column;
   justify-content: space-evenly;
   padding: 5px 5px;
   background-color: whitesmoke;
@@ -106,6 +105,12 @@ html {
 .list {
   padding-top: 1px;
   padding-bottom: 1px;
+}
+
+.rating-list {
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 15px;
 }
 
 a {

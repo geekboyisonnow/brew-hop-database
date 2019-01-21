@@ -23,7 +23,7 @@ class Map extends Component {
       viewport: {
         latitude: 27.7676,
         longitude: -82.6403,
-        zoom: 13.5,
+        zoom: 12.5,
         bearing: 0,
         pitch: 0
       }
@@ -49,13 +49,13 @@ class Map extends Component {
         latitude={popupInfo.latitude}
         closeOnClick={false}
         onClose={() => {
-          this.props.onClickMarker(null)
+          this.props.onClickMarker({})
           this.setState({ popupInfo: null })
         }}
       >
         <div>
-          <p>{popupInfo.bar_name}</p>
-          <p>{popupInfo.address}</p>
+          <p>{popupInfo.name}</p>
+          <p>{popupInfo.location}</p>
           <p>{popupInfo.hours}</p>
         </div>
       </Popup>
@@ -71,10 +71,10 @@ class Map extends Component {
       <Marker
         longitude={this.props.userLocation.longitude}
         latitude={this.props.userLocation.latitude}
-        offsetTop={-64}
-        offsetLeft={-32}
+        offsetTop={0}
+        offsetLeft={0}
       >
-        <img width="64" height="64" src={userPin} />
+        <img width="24" height="24" src={userPin} />
       </Marker>
     )
   }
@@ -87,6 +87,7 @@ class Map extends Component {
     const { viewport } = this.state
 
     return (
+      <div className="map">
       <MapGL
         {...viewport}
         width="100%"
@@ -110,22 +111,23 @@ class Map extends Component {
               key={bar.id}
               longitude={bar.longitude}
               latitude={bar.latitude}
-              offsetTop={-64}
-              offsetLeft={-32}
+              offsetTop={0}
+              offsetLeft={0}
             >
               <img
                 onClick={() => {
                   this.props.onClickMarker(bar)
                   this.setState({ popupInfo: bar })
                 }}
-                width="64"
-                height="64"
+                width="24"
+                height="24"
                 src={userPin}
               />
             </Marker>
           )
         })}
       </MapGL>
+      </div>
     )
   }
 }

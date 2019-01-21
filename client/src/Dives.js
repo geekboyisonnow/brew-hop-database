@@ -12,6 +12,7 @@ class Dives extends Component {
       url: "/bars.json?kind=dive",
       bars: [],
       other: [],
+      selected_bar: {},
       userLocation: null,
       selectedLocation: null
     };
@@ -58,8 +59,8 @@ class Dives extends Component {
 
     return (
       <div>
-        <p>{this.state.selectedLocation.bar_name}</p>
-        <p>{this.state.selectedLocation.address}</p>
+        <p>{this.state.selectedLocation.name}</p>
+        <p>{this.state.selectedLocation.location}</p>
         <p>{this.state.selectedLocation.hours}</p>
         <p>{this.state.selectedLocation.rating}</p>
       </div>
@@ -69,6 +70,14 @@ class Dives extends Component {
   setSelectedLocation = location => {
     this.setState({ selectedLocation: location });
   };
+
+  onClickMarker = (bar) => {
+    this.setState({
+      selected_bar: bar
+    })
+    console.log('you clicked on')
+    console.log(bar)
+  }
 
   render() {
     if (!this.state.bars) {
@@ -83,7 +92,11 @@ class Dives extends Component {
     } else {
       // console.log(this.state.bars)
       return (
-        <div id="content">
+        <div>
+            <div className="map">
+              <Map onClickMarker={this.onClickMarker} bars={this.state.bars}/>
+            </div>
+          <div id="content">
           <div className="bars">
             <div className="list">
               <strong>
@@ -92,7 +105,7 @@ class Dives extends Component {
             </div>
             <div className="list">
               {this.state.bars.map(bar => {
-                return <div key={bar.id}>{bar.name} {bar.stars}</div>;
+                return <div key={bar.id}>{bar.name}</div>;
               })}
             </div>
           </div>
@@ -102,15 +115,13 @@ class Dives extends Component {
                 <u>Rating</u>
               </strong>
             </div>
-            <div className="list">
+            <div className="rating-list">
               {this.state.bars.map(bar => {
                 return <div key={bar.id}>{bar.stars}</div>;
               })}
             </div>
-            <div className="map">
-              <Map bars={this.state.bars}/>
-            </div>
           </div>
+        </div>
         </div>
       );
     }
