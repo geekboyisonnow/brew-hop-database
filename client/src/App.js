@@ -10,7 +10,7 @@ import BarInfo from './BarInfo'
 import Footer from './Footer';
 import './App.css';
 import 'mapbox-gl/dist/mapbox-gl.css';
-import StaticMap from './map-example.PNG'
+
 
 
 class App extends Component {

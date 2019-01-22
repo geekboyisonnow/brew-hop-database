@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import axios from "axios";
-import Logo from "./Logo-Circle-4.png";
 import Map from './Map'
 import "./App.css";
 class Home extends Component {

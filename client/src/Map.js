@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import {render} from 'react-dom';
 import './App.css';
 import MapGL, { Marker, Popup, NavigationControl } from 'react-map-gl'
 import userPin from './bar-pin.png'
@@ -7,7 +6,7 @@ import userPin from './bar-pin.png'
 // import ControlPanel from './control-panel';
 // import CITIES from '../../data/cities.json';
 
-const TOKEN = ''; // Set your mapbox token here
+// const TOKEN = ''; // Set your mapbox token here
 
 const navStyle = {
   position: 'absolute',
@@ -76,7 +75,7 @@ class Map extends Component {
         offsetTop={-12}
         offsetLeft={12}
       >
-        <img width="24" height="24" src={userPin} />
+        <img width="24" height="24" src={userPin} alt="Bar Pin" />
       </Marker>
     )
   }
@@ -124,6 +123,7 @@ class Map extends Component {
                 width="24"
                 height="24"
                 src={userPin}
+                alt="User Pin"
               />
             </Marker>
           )

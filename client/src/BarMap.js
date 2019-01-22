@@ -1,6 +1,6 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom"
 import axios from "axios";
-import Logo from "./Logo-Circle-4.png";
 import Map from './Map'
 import "./App.css";
 
@@ -128,7 +128,7 @@ class BarMap extends Component {
             </div>
             <div className="list">
               {this.state.bars.map(bar => {
-                return <div key={bar.id}>{bar.name}</div>;
+                return <div key={bar.id}><Link to="/barinfo">{bar.name}</Link></div>;
               })}
             </div>
           </div>
