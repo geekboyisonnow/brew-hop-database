@@ -81,7 +81,19 @@ html {
 #content {
   display: flex;
   justify-content: space-evenly;
-  padding: 5px 5px;
+  padding: 5px 0px;
+  background-color: whitesmoke;
+  margin: 0px;
+  margin-top: 15px;
+  min-height: 28vh;
+  height: auto;
+  width: 100%;
+}
+
+#search-content {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 5px 0px;
   background-color: whitesmoke;
   margin: 0px 10px;
   margin-top: 10px;
@@ -92,22 +104,22 @@ html {
 
 .bars {
   margin: 0;
-  padding-top: 0px;
+  padding-top: 2px;
   padding-bottom: 2px;
   text-align: left;
   list-style: none;
-  font-size: 14px;
+  font-size: 18px;
   }
 
 .list {
-  padding-top: 1px;
-  padding-bottom: 1px;
+  padding-top: 2px;
+  padding-bottom: 5px;
 }
 
 .rating-list {
   padding-top: 1px;
   padding-bottom: 1px;
-  padding-left: 15px;
+  padding-left: 5px;
 }
 
 a {

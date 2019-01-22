@@ -4,12 +4,12 @@ import Logo from "./Logo-Circle-4.png";
 import Map from './Map'
 import "./App.css";
 
-class Crawl extends Component {
+class BarMap extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      url: "/bars.json",
+      search: props.search,
       bars: [],
       other: [],
       selected_bar: {},
@@ -18,14 +18,40 @@ class Crawl extends Component {
     };
   }
 
+  getURL = () => {
+    let url = `/bars.json?`
+    
+    if (this.props.kind) {
+      url = url + `&kind=${this.props.kind}`
+    }
+
+    const userLocation = this.state.userLocation
+
+    if (userLocation && userLocation.latitude && userLocation.longitude) {
+      url = url + `&latitude=${userLocation.latitude}&longitude=${
+        userLocation.longitude
+      }`
+    }
+
+    if (this.state.search) {
+      url = url + `&search=${this.state.search}`
+    }
+
+    return url
+  }
+
   getBars = () => {
-    axios.get(this.state.url).then(response => {
+    axios.get(this.getURL()).then(response => {
       console.log(response.data)
       this.setState({
         bars: response.data
       });
     });
   };
+
+  componentWillReceiveProps = (nextProps) => {
+    this.setState({ search: nextProps.search }, () => { this.getBars() })
+  }
 
   componentDidMount() {
     // Ask the browser to allow the user to choose to share it's location with us
@@ -39,9 +65,6 @@ class Crawl extends Component {
             latitude: position.coords.latitude,
             longitude: position.coords.longitude
           },
-          url: `/bars.json?latitude=${position.coords.latitude}&longitude=${
-            position.coords.longitude
-          }`
         },
         () => {
           this.getBars();
@@ -62,7 +85,7 @@ class Crawl extends Component {
         <p>{this.state.selectedLocation.name}</p>
         <p>{this.state.selectedLocation.location}</p>
         <p>{this.state.selectedLocation.hours}</p>
-        <p>{this.state.selectedLocation.rating}</p>
+        <p>{this.state.selectedLocation.rating.toFixed(2)}</p>
       </div>
     );
   }
@@ -84,7 +107,7 @@ class Crawl extends Component {
       // console.log('no data')
       return (
         <div id="content">
-          <p>Local Bars</p>
+          <p>Dive Bars</p>
           <p>Should Be Dynamically</p>
           <p>Listed Here!!!</p>
         </div>
@@ -93,12 +116,14 @@ class Crawl extends Component {
       // console.log(this.state.bars)
       return (
         <div>
+            <div className="map">
               <Map onClickMarker={this.onClickMarker} bars={this.state.bars}/>
+            </div>
           <div id="content">
           <div className="bars">
             <div className="list">
               <strong>
-                <u>All Bars Near By</u>
+                <u>Dives</u>
               </strong>
             </div>
             <div className="list">
@@ -115,7 +140,7 @@ class Crawl extends Component {
             </div>
             <div className="rating-list">
               {this.state.bars.map(bar => {
-                return <div key={bar.id}>{bar.stars}</div>;
+                return <div key={bar.id}>{bar.stars.toFixed(1)}</div>;
               })}
             </div>
           </div>
@@ -126,4 +151,4 @@ class Crawl extends Component {
   }
 }
 
-export default Crawl;
+export default BarMap;

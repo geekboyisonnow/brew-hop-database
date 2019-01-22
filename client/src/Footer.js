@@ -9,8 +9,8 @@ class Footer extends Component {
         <div id="ride">
       
         
-          <button id="uber"><strong>Uber</strong></button>
-          <button id="uber"><strong>Lyft</strong></button>
+          <button id="uber"><a href="https://www.uber.com/"><strong>Uber</strong></a></button>
+          <button id="uber"><a href="https://www.lyft.com/"><strong>Lyft</strong></a></button>
         </div>
       <div className="dreamlight"><strong>dreamlight <i className="far fa-lightbulb" ></i> development &copy; 2018</strong></div>
   

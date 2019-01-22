@@ -9,6 +9,8 @@ class BreweryRatingsController < ApplicationController
 
     all_brewery_ratings = BreweryRating.all.order(:bar)
 
+    
+
     if filter
       @brewery_ratings = all_brewery_ratings.
       where("bar ?", "%{filter}")
@@ -17,6 +19,10 @@ class BreweryRatingsController < ApplicationController
     end
 
     @brewery_ratings = BreweryRating.all
+
+    # def self.round_down(all_brewery_ratings, n = 2)
+    #   "%.#{n}f" % all_brewery_ratings.to_d.truncate(n)
+    # end
   end
 
   # GET /brewery_ratings/1
