@@ -20,32 +20,9 @@ class BarsController < ApplicationController
       format.html { render :index }
     end
 
-  #   def get_track_parent
-  #     if params[:search]
-  #       @bars = @bars.find(params[:name]).present?
-  #     elsif params[:search]
-  #       @bars = @bars.find(params[:location])
-  #     else params[:search]
-  #       @bars = @bars.find(params[:city])
-  #     end
-  #   end
-  # end
-
-    
-
-    # filter = params[:filter]
+   # filter = params[:filter]
   end
   
-  # def search
-  #   if params[:search]
-  #   # Do a search on the name *OR* the location
-  #   @bars = @bars.where(name: params:[:name]) ||
-  #   @bars = @bars.where(location: params:[:location]) ||
-  #   @bars = @bars.near(latitude: params:[:latitude]) ||
-  #   @bars = @bars.near(longitude: params:[:longitude])
-
-  # end
-
   # GET /bars/1
   # GET /bars/1.json
   def show

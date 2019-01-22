@@ -20,9 +20,6 @@ class BreweryRatingsController < ApplicationController
 
     @brewery_ratings = BreweryRating.all
 
-    # def self.round_down(all_brewery_ratings, n = 2)
-    #   "%.#{n}f" % all_brewery_ratings.to_d.truncate(n)
-    # end
   end
 
   # GET /brewery_ratings/1

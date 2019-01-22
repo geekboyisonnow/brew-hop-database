@@ -123,7 +123,7 @@ class BarMap extends Component {
           <div className="bars">
             <div className="list">
               <strong>
-                <u>Dives</u>
+                <u>Bars</u>
               </strong>
             </div>
             <div className="list">

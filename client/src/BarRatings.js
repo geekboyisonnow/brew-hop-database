@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 // import { BrowserRouter as Router, Route } from "react-router-dom";
 
 
-class BarInfo extends Component {
+class BarRatings extends Component {
   render() {
     return (
       <div>
@@ -12,4 +12,4 @@ class BarInfo extends Component {
   }
 }
 
-export default BarInfo;
+export default BarRatings;
