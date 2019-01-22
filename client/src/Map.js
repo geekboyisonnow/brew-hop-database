@@ -15,9 +15,11 @@ const navStyle = {
   left: 0,
   padding: '10px'
 }
+
 class Map extends Component {
   constructor(props) {
     super(props)
+
     this.state = {
       popupInfo: null,
       viewport: {
@@ -71,8 +73,8 @@ class Map extends Component {
       <Marker
         longitude={this.props.userLocation.longitude}
         latitude={this.props.userLocation.latitude}
-        offsetTop={0}
-        offsetLeft={0}
+        offsetTop={-12}
+        offsetLeft={12}
       >
         <img width="24" height="24" src={userPin} />
       </Marker>
@@ -92,8 +94,8 @@ class Map extends Component {
         {...viewport}
         width="100%"
         height="100%"
-        mapStyle="mapbox://styles/mapbox/dark-v9"
-        mapboxApiAccessToken="pk.eyJ1IjoiZ2Vla2JveWlzb25ub3ciLCJhIjoiY2pyMHljMTMzMHU4ZTN5bHNkNWZzbGdrYiJ9.z13l-C7XioaNx3zQ7igC5Q"
+        // mapboxApiAccessToken="pk.eyJ1IjoiZ2Vla2JveWlzb25ub3ciLCJhIjoiY2pyMHljMTMzMHU4ZTN5bHNkNWZzbGdrYiJ9.z13l-C7XioaNx3zQ7igC5Q"
+        mapboxApiAccessToken="pk.eyJ1IjoiZ2F2aW5zdGFyayIsImEiOiIxZjVmODFhYWQ2NjIyZGY1MTQ5MzM3ZTE2MWNkMDkxMiJ9.HG1IbUfea4FfcJ0WrY7Pqg"
         onViewportChange={this._updateViewport}
         onClick={this._userClicked}
       >
@@ -111,8 +113,8 @@ class Map extends Component {
               key={bar.id}
               longitude={bar.longitude}
               latitude={bar.latitude}
-              offsetTop={0}
-              offsetLeft={0}
+              offsetTop={-12}
+              offsetLeft={12}
             >
               <img
                 onClick={() => {

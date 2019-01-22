@@ -4,10 +4,18 @@ class BarsController < ApplicationController
   # GET /bars
   # GET /bars.json
   def index
-    @bars = Bar.all
+    @bars = Bar.where.not(latitude: nil)
 
     if params[:kind]
       @bars = @bars.where(kind: params[:kind])
+    end
+
+    if params[:search]
+      # Do a search on the name *OR* the location
+    end
+
+    respond_to do |format|
+      format.json { @bars = @bars.order("RANDOM()").limit(5) }
     end
 
     # filter = params[:filter]

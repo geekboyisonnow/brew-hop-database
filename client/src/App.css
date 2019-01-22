@@ -46,14 +46,11 @@ html {
   font-size: 18px;
   font-family: 'Roboto', sans-serif;
   background-image: linear-gradient(darkgrey, rgb(230, 230, 230));
-  text-align: center;
 }
 
 .map {
   height: 300px;
-  width: 300px;
-  margin: 0;
-  padding: 0;
+  width: 100%;
 }
 
 .search {

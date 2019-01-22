@@ -1,71 +1,131 @@
-import React, { Component } from 'react'
-import './App.css';
+import React, { Component } from "react";
+import axios from "axios";
+import Logo from "./Logo-Circle-4.png";
+import Map from './Map'
+import "./App.css";
 
 class Breweries extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-        locations: [
-          {
-              id: 1,
-            bar_name: "Se7enth Sun",
-            overall_rating: 4.5,
-            location: "1415 Main St. Dunedin Fl 34698",
-            latitude: 28.019405,
-            latitude: -82.7667774285714,
-            phone: "888-888-8888",
-            hours: "1PM - 3AM",
-            kind_of_bar: "Dive Bar"
-          },
-          {
-              id: 2,
-            bar_name: "Dunedin Brewery",
-            overall_rating: 4.1256987412354212,
-            location: "2220 Central Ave. St. Petersburg, FL",
-            latitude: 27.7709555306122,
-            latitude: -82.663427244898,
-            phone: "",
-            hours: "1",
-            kind_of_bar: "Brewery Bar" 
-
-          },
-          {
-              id: 3,
-            bar_name: "Soggy Bottom Brewery",
-            overall_rating: 5.5,
-            location: "2222 Central Ave. St. Petersburg, FL",
-            latitude: 27.7709551836735,
-            latitude: -82.6634494693878	,
-            phone: "",
-            hours: "247",
-            kind_of_bar: "Dive Bar" 
-          }  
-        ]
+    constructor(props) {
+        super(props);
+    
+        this.state = {
+          url: "/bars.json?kind=brewery",
+          bars: [],
+          other: [],
+          selected_bar: {},
+          userLocation: null,
+          selectedLocation: null
+        };
+      }
+    
+      getBars = () => {
+        axios.get(this.state.url).then(response => {
+          console.log(response.data)
+          this.setState({
+            bars: response.data
+          });
+        });
+      };
+    
+      componentDidMount() {
+        // Ask the browser to allow the user to choose to share it's location with us
+        navigator.geolocation.getCurrentPosition(position => {
+          // When they do, we will get a `position` variable
+    
+          // Set the userLocation in state to where the user is!
+          this.setState(
+            {
+              userLocation: {
+                latitude: position.coords.latitude,
+                longitude: position.coords.longitude
+              },
+              url: `/bars.json?kind=brewery&latitude=${position.coords.latitude}&longitude=${
+                position.coords.longitude
+              }`
+            },
+            () => {
+              this.getBars();
+            }
+          );
+        });
+    
+        this.getBars();
+      }
+    
+      renderSelectedLocation() {
+        if (!this.state.selectedLocation) {
+          return;
+        }
+    
+        return (
+          <div>
+            <p>{this.state.selectedLocation.name}</p>
+            <p>{this.state.selectedLocation.location}</p>
+            <p>{this.state.selectedLocation.hours}</p>
+            <p>{this.state.selectedLocation.rating}</p>
+          </div>
+        );
+      }
+    
+      setSelectedLocation = location => {
+        this.setState({ selectedLocation: location });
+      };
+    
+      onClickMarker = (bar) => {
+        this.setState({
+          selected_bar: bar
+        })
+        console.log('you clicked on')
+        console.log(bar)
+      }
+    
+      render() {
+        if (!this.state.bars) {
+          // console.log('no data')
+          return (
+            <div id="content">
+              <p>Breweries</p>
+              <p>Should Be Dynamically</p>
+              <p>Listed Here!!!</p>
+            </div>
+          );
+        } else {
+          // console.log(this.state.bars)
+          return (
+            <div>
+                <div className="map">
+                  <Map onClickMarker={this.onClickMarker} bars={this.state.bars}/>
+                </div>
+              <div id="content">
+              <div className="bars">
+                <div className="list">
+                  <strong>
+                    <u>Breweries</u>
+                  </strong>
+                </div>
+                <div className="list">
+                  {this.state.bars.map(bar => {
+                    return <div key={bar.id}>{bar.name}</div>;
+                  })}
+                </div>
+              </div>
+              <div className="bars">
+                <div className="list">
+                  <strong>
+                    <u>Rating</u>
+                  </strong>
+                </div>
+                <div className="rating-list">
+                  {this.state.bars.map(bar => {
+                    return <div key={bar.id}>{bar.stars}</div>;
+                  })}
+                </div>
+              </div>
+            </div>
+            </div>
+          );
+        }
+      }
     }
-}
-render() {
-return (
-
-    <div id="content">
-        <div className="bars">
-            <div className="list"><strong><u>Breweries</u></strong></div>
-            <div className="list">
-            {this.state.locations.map(location => 
-            <div key={location.id}>{location.bar_name}</div>)}
-            </div>
-        </div>
-        <div className="bars">
-            <div className="list"><strong><u>Rating</u></strong></div>
-            <div className="list">
-            {this.state.locations.map(location => 
-            <div key={location.id}>{location.overall_rating}</div>)}
-            </div>
-        </div>
-    </div>
-
-)
-}
-}
 
 export default Breweries;
