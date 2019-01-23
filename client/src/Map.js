@@ -2,6 +2,8 @@ import React, {Component} from 'react'
 import './App.css';
 import MapGL, { Marker, Popup, NavigationControl } from 'react-map-gl'
 import userPin from './bar-pin.png'
+import axios from 'axios'
+
 // import locationInfo from './location-info'
 // import ControlPanel from './control-panel';
 // import CITIES from '../../data/cities.json';
@@ -35,6 +37,62 @@ class Map extends Component {
     this.setState({ viewport: newViewport })
   }
 
+  onSubmitRating = (event) => {
+    event.preventDefault()
+
+    const form = event.target
+    const formData = new FormData(event.target)
+
+    axios.post('/dive_ratings', formData).then((response) => {
+      this.props.getBars()
+
+      this.setState({ popupInfo: null })
+    })
+  }
+
+  renderDiveRatingForm = (bar_id) => {
+    return (
+      <>
+        <input type="hidden" name="dive_rating[bar_id]" value={bar_id}/>
+        <ul>
+          <li><input type="checkbox" name="dive_rating[cd_jukebox]"/> CD Jukebox</li>
+          <li><input type="checkbox" name="dive_rating[sweet_caroline]"/>Sweet Caroline</li>
+          <li><input type="checkbox" name="dive_rating[pickeled]"/>Pickled</li>
+          <li><input type="checkbox" name="dive_rating[dollar_bills]"/>Dollar Bills</li>
+          <li><input type="checkbox" name="dive_rating[cd_jukebox]"/> CD Jukebox</li>
+          <li><input type="checkbox" name="dive_rating[sweet_caroline]"/>Sweet Caroline</li>
+          <li><input type="checkbox" name="dive_rating[pickeled]"/>Pickled</li>
+          <li><input type="checkbox" name="dive_rating[dollar_bills]"/>Dollar Bills</li>
+          <li><input type="checkbox" name="dive_rating[cd_jukebox]"/> CD Jukebox</li>
+          <li><input type="checkbox" name="dive_rating[sweet_caroline]"/>Sweet Caroline</li>
+          <li><input type="checkbox" name="dive_rating[pickeled]"/>Pickled</li>
+          <li><input type="checkbox" name="dive_rating[dollar_bills]"/>Dollar Bills</li>
+        </ul>
+      </>
+    )
+  }
+
+  renderBreweryRatingForm = (bar_id) => {
+    return (
+      <>
+        <input type="hidden" name="brewery_rating[bar_id]" value={bar_id}/>
+        <ul>
+          <li><input type="checkbox" name="brewery_rating[ipa]"/>IPA</li>
+          <li><input type="checkbox" name="brewery_rating[apa]"/>APA</li>
+          <li><input type="checkbox" name="brewery_rating[ale]"/>Ale</li>
+          <li><input type="checkbox" name="brewery_rating[hefe]"/>Hefe</li>
+          <li><input type="checkbox" name="brewery_rating[porter]"/>Porter</li>
+          <li><input type="checkbox" name="brewery_rating[stout]"/>Stout</li>
+          <li><input type="checkbox" name="brewery_rating[pale]"/>Pale</li>
+          <li><input type="checkbox" name="brewery_rating[blonde]"/>Blonde</li>
+          <li><input type="checkbox" name="brewery_rating[pilsner]"/>Pilsner</li>
+          <li><input type="checkbox" name="brewery_rating[growler]"/>Growler</li>
+          <li><input type="checkbox" name="brewery_rating[crowler]"/>Crowler</li>
+          <li><input type="checkbox" name="brewery_rating[rail]"/>Rail</li>
+        </ul>
+      </>
+    )
+  }
   renderPopup = () => {
     const popupInfo = this.state.popupInfo
 
@@ -54,10 +112,15 @@ class Map extends Component {
           this.setState({ popupInfo: null })
         }}
       >
-        <div>
+        <div className="bar-popup">
           <p>{popupInfo.name}</p>
           <p>{popupInfo.location}</p>
           <p>{popupInfo.hours}</p>
+          <form onSubmit={this.onSubmitRating}>
+            {popupInfo.kind === "dive" ? this.renderDiveRatingForm(popupInfo.id) : this.renderBreweryRatingForm(popupInfo.id) }
+            <button type="submit">Save</button>
+
+          </form>
         </div>
       </Popup>
     )

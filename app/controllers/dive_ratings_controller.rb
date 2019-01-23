@@ -1,5 +1,6 @@
 class DiveRatingsController < ApplicationController
   before_action :set_dive_rating, only: [:show, :edit, :update, :destroy]
+  protect_from_forgery except: :create
 
   # GET /dive_ratings
   # GET /dive_ratings.json

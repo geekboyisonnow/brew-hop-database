@@ -8,7 +8,7 @@ class Tabs extends Component {
       <div className="tab">
     <Link to="/breweries"><button><strong>breweries</strong></button></Link>
     <Link to="/dives"><button className="tablinks" ><strong>dive bars</strong></button></Link>
-    <Link to="/bars"><button className="tablinks" ><strong>all local bars</strong></button></Link>
+    <Link to="/bars"><button className="tablinks" ><strong>bars nearby</strong></button></Link>
      
       </div>
     )

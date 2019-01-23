@@ -80,7 +80,7 @@ html {
 
 #content {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   padding: 5px 0px;
   background-color: whitesmoke;
   margin: 0px;
@@ -92,7 +92,7 @@ html {
 
 #search-content {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   padding: 5px 0px;
   background-color: whitesmoke;
   margin: 0px 10px;
@@ -108,7 +108,7 @@ html {
   padding-bottom: 2px;
   text-align: left;
   list-style: none;
-  font-size: 18px;
+  font-size: 14px;
   }
 
 .list {
@@ -116,10 +116,16 @@ html {
   padding-bottom: 5px;
 }
 
+.bar-list {
+  padding-top: 1px;
+  padding-bottom: 1px;
+  line-height: 1.4;
+}
+
 .rating-list {
   padding-top: 1px;
   padding-bottom: 1px;
-  padding-left: 5px;
+  line-height: 1;
 }
 
 a {
@@ -215,6 +221,11 @@ a {
 
 .tabcontent {
   animation: fadeEffect 1s; /* Fading effect takes 1 second */
+}
+
+.bar-popup ul {
+  list-style: none;
+  display: flex;
 }
 
 /* Go from zero to full opacity */

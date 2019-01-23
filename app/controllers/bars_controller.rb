@@ -15,12 +15,10 @@ class BarsController < ApplicationController
       @bars = @bars.where('name ILIKE :search or location ILIKE :search', { search: search })
     end
 
-    respond_to do |format|
-      format.json { @bars = @bars.order("RANDOM()").limit(5) }
-      format.html { render :index }
-    end
-
-   # filter = params[:filter]
+    # respond_to do |format|
+    #   format.json { @bars = @bars.order("RANDOM()").limit(5) }
+    #   format.html { render :index }
+    # end
   end
   
   # GET /bars/1

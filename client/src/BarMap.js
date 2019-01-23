@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom"
 import axios from "axios";
+import StarRatings from 'react-star-ratings';
 import Map from './Map'
 import "./App.css";
 
@@ -75,6 +76,7 @@ class BarMap extends Component {
     this.getBars();
   }
 
+  
   renderSelectedLocation() {
     if (!this.state.selectedLocation) {
       return;
@@ -117,7 +119,7 @@ class BarMap extends Component {
       return (
         <div>
             <div className="map">
-              <Map onClickMarker={this.onClickMarker} bars={this.state.bars}/>
+              <Map getBars={this.getBars} kind={this.props.kind} onClickMarker={this.onClickMarker} bars={this.state.bars}/>
             </div>
           <div id="content">
           <div className="bars">
@@ -126,7 +128,7 @@ class BarMap extends Component {
                 <u>Bars</u>
               </strong>
             </div>
-            <div className="list">
+            <div className="bar-list">
               {this.state.bars.map(bar => {
                 return <div key={bar.id}><Link to="/barinfo">{bar.name}</Link></div>;
               })}
@@ -140,7 +142,15 @@ class BarMap extends Component {
             </div>
             <div className="rating-list">
               {this.state.bars.map(bar => {
-                return <div key={bar.id}>{bar.stars.toFixed(1)}</div>;
+                return <div>
+                  <StarRatings
+                starDimension="17.5px"
+                rating={bar.stars}
+                starRatedColor="green"
+                numberOfStars={4}
+                name='stars'
+              />
+              </div>
               })}
             </div>
           </div>
