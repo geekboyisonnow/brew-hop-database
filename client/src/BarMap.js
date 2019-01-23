@@ -144,7 +144,7 @@ class BarMap extends Component {
               {this.state.bars.map(bar => {
                 return <div>
                   <StarRatings
-                starDimension="17.5px"
+                starDimension="18px"
                 rating={bar.stars}
                 starRatedColor="green"
                 numberOfStars={4}
