@@ -26,7 +26,7 @@ class Map extends Component {
       viewport: {
         latitude: 27.7676,
         longitude: -82.6403,
-        zoom: 12.5,
+        zoom: 8,
         bearing: 0,
         pitch: 0
       }
@@ -37,7 +37,20 @@ class Map extends Component {
     this.setState({ viewport: newViewport })
   }
 
-  onSubmitRating = (event) => {
+  onSubmitBreweryRating = (event) => {
+    event.preventDefault()
+
+    const form = event.target
+    const formData = new FormData(event.target)
+
+    axios.post('/brewery_ratings', formData).then((response) => {
+      this.props.getBars()
+
+      this.setState({ popupInfo: null })
+    })
+  }  
+
+  onSubmitDiveRating = (event) => {
     event.preventDefault()
 
     const form = event.target
@@ -54,20 +67,26 @@ class Map extends Component {
     return (
       <>
         <input type="hidden" name="dive_rating[bar_id]" value={bar_id}/>
-        <ul>
-          <li><input type="checkbox" name="dive_rating[cd_jukebox]"/> CD Jukebox</li>
-          <li><input type="checkbox" name="dive_rating[sweet_caroline]"/>Sweet Caroline</li>
-          <li><input type="checkbox" name="dive_rating[pickeled]"/>Pickled</li>
-          <li><input type="checkbox" name="dive_rating[dollar_bills]"/>Dollar Bills</li>
-          <li><input type="checkbox" name="dive_rating[cd_jukebox]"/> CD Jukebox</li>
-          <li><input type="checkbox" name="dive_rating[sweet_caroline]"/>Sweet Caroline</li>
-          <li><input type="checkbox" name="dive_rating[pickeled]"/>Pickled</li>
-          <li><input type="checkbox" name="dive_rating[dollar_bills]"/>Dollar Bills</li>
-          <li><input type="checkbox" name="dive_rating[cd_jukebox]"/> CD Jukebox</li>
-          <li><input type="checkbox" name="dive_rating[sweet_caroline]"/>Sweet Caroline</li>
-          <li><input type="checkbox" name="dive_rating[pickeled]"/>Pickled</li>
-          <li><input type="checkbox" name="dive_rating[dollar_bills]"/>Dollar Bills</li>
-        </ul>
+        <div className="bars-rating">
+            <div className="list">
+              <strong>
+                <u>Click to Rate as True</u>
+              </strong>
+            </div>
+            <div className="rating-list">
+         <div><input type="checkbox" name="dive_rating[cd_jukebox]"/> CD Jukebox</div>
+         <div><input type="checkbox" name="dive_rating[sweet_caroline]"/>"Sweet Caroline"</div>
+         <div><input type="checkbox" name="dive_rating[pickeled]"/>Pickled Anything</div>
+         <div><input type="checkbox" name="dive_rating[dollar_bills]"/>Dollar Bill Wallpaper</div>
+         <div><input type="checkbox" name="dive_rating[writing_wall]"/>Writing on the Wall</div>
+         <div><input type="checkbox" name="dive_rating[mirror]"/>Mirror</div>
+         <div><input type="checkbox" name="dive_rating[pbr]"/>PBR</div>
+         <div><input type="checkbox" name="dive_rating[domestic_sign]"/>Domestic Beer Sign</div>
+         <div><input type="checkbox" name="dive_rating[wash_hands]"/>No "Employees Must Wash Hands" Sign</div>
+         <div><input type="checkbox" name="dive_rating[urinal_cake]"/>Urinal Cake</div>
+         <div><input type="checkbox" name="dive_rating[smoking]"/>Allow Smoking</div>
+         <div><input type="checkbox" name="dive_rating[dart_board]"/>Dart Board</div>
+        </div></div>
       </>
     )
   }
@@ -76,20 +95,27 @@ class Map extends Component {
     return (
       <>
         <input type="hidden" name="brewery_rating[bar_id]" value={bar_id}/>
-        <ul>
-          <li><input type="checkbox" name="brewery_rating[ipa]"/>IPA</li>
-          <li><input type="checkbox" name="brewery_rating[apa]"/>APA</li>
-          <li><input type="checkbox" name="brewery_rating[ale]"/>Ale</li>
-          <li><input type="checkbox" name="brewery_rating[hefe]"/>Hefe</li>
-          <li><input type="checkbox" name="brewery_rating[porter]"/>Porter</li>
-          <li><input type="checkbox" name="brewery_rating[stout]"/>Stout</li>
-          <li><input type="checkbox" name="brewery_rating[pale]"/>Pale</li>
-          <li><input type="checkbox" name="brewery_rating[blonde]"/>Blonde</li>
-          <li><input type="checkbox" name="brewery_rating[pilsner]"/>Pilsner</li>
-          <li><input type="checkbox" name="brewery_rating[growler]"/>Growler</li>
-          <li><input type="checkbox" name="brewery_rating[crowler]"/>Crowler</li>
-          <li><input type="checkbox" name="brewery_rating[rail]"/>Rail</li>
-        </ul>
+        <div className="bars-rating">
+            <div className="list">
+              <strong>
+                <u>Click to Rate the Selection as Good</u>
+              </strong>
+            </div>
+            <div className="rating-list">
+         <div><input type="checkbox" name="brewery_rating[ipa]"/>IPA</div>
+         <div><input type="checkbox" name="brewery_rating[apa]"/>APA</div>
+         <div><input type="checkbox" name="brewery_rating[ale]"/>Ale</div>
+         <div><input type="checkbox" name="brewery_rating[hefe]"/>Hefe</div>
+         <div><input type="checkbox" name="brewery_rating[porter]"/>Porter</div>
+         <div><input type="checkbox" name="brewery_rating[stout]"/>Stout</div>
+         <div><input type="checkbox" name="brewery_rating[pale]"/>Pale</div>
+         <div><input type="checkbox" name="brewery_rating[blonde]"/>Blonde</div>
+         <div><input type="checkbox" name="brewery_rating[pilsner]"/>Pilsner</div>
+         <div><input type="checkbox" name="brewery_rating[growler]"/>Growler</div>
+         <div><input type="checkbox" name="brewery_rating[crowler]"/>Crowler</div>
+         <div><input type="checkbox" name="brewery_rating[rail]"/>Rail</div>
+        </div>
+        </div>
       </>
     )
   }
@@ -103,7 +129,7 @@ class Map extends Component {
     return (
       <Popup
         tipSize={5}
-        anchor="top"
+        anchor="bottom"
         longitude={popupInfo.longitude}
         latitude={popupInfo.latitude}
         closeOnClick={false}
@@ -116,7 +142,7 @@ class Map extends Component {
           <p>{popupInfo.name}</p>
           <p>{popupInfo.location}</p>
           <p>{popupInfo.hours}</p>
-          <form onSubmit={this.onSubmitRating}>
+          <form onSubmit={popupInfo.kind === "dive" ? this.onSubmitDiveRating : this.onSubmitBreweryRating}>
             {popupInfo.kind === "dive" ? this.renderDiveRatingForm(popupInfo.id) : this.renderBreweryRatingForm(popupInfo.id) }
             <button type="submit">Save</button>
 

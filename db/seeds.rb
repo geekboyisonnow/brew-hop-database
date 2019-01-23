@@ -32,7 +32,12 @@ somethins = Bar.create!({ name: "Somethin' Different", location: "2420 Central A
 somethins.dive_ratings.create!({ cd_jukebox: true, sweet_caroline: true, pickeled: true, dollar_bills: true, writing_wall: true, mirror: true, pbr: true, domestic_sign: true, wash_hands: true, urinal_cake: true, smoking: true, dart_board: true })
 flamingos = Bar.create!({ name: "Flamingos Sports Bar", location: "1230 9th St N, St. Petersburg, FL 33705", phone: "(727) 821-9397", hours: "12PM - 3AM", kind: "dive" })
 flamingos.dive_ratings.create!({ cd_jukebox: true, sweet_caroline: true, pickeled: true, dollar_bills: true, writing_wall: true, mirror: true, pbr: true, domestic_sign: true, wash_hands: true, urinal_cake: true, smoking: true, dart_board: true })
-
+five = Bar.create!({ name: "5 Star Dive Bar", location: "1811 N 15th St, Tampa, FL 33605", phone: "(813) 284-5691", hours: "10AM - 3AM", kind: "brewery" })
+five.dive_ratings.create!({ cd_jukebox: true, sweet_caroline: true, pickeled: true, dollar_bills: true, writing_wall: true, mirror: true, pbr: true, domestic_sign: true, wash_hands: true, urinal_cake: true, smoking: true, dart_board: true })
+hub = Bar.create!({ name: "The Hub Bar", location: "719 N Franklin St, Tampa, FL 33602", phone: "(813) 229-1553", hours: "9AM - 3AM", kind: "brewery" })
+hub.dive_ratings.create!({ cd_jukebox: true, sweet_caroline: true, pickeled: true, dollar_bills: true, writing_wall: true, mirror: true, pbr: true, domestic_sign: true, wash_hands: true, urinal_cake: true, smoking: true, dart_board: true })
+barefoot = Bar.create!({ name: "Barefoot Billy's Friendly Tavern", location: "3120 W Gandy Blvd, Tampa, FL 33611", phone: "(813) 831-8703", hours: "1PM - 3AM", kind: "brewery" })
+barefoot.dive_ratings.create!({ cd_jukebox: true, sweet_caroline: true, pickeled: true, dollar_bills: true, writing_wall: true, mirror: true, pbr: true, domestic_sign: true, wash_hands: true, urinal_cake: true, smoking: true, dart_board: true })
 
 cage = Bar.create!({ name: "Cage Brewing", location: "2001 1st Ave S, St. Petersburg, FL 33712", phone: "(727) 201-4278", hours: "1PM - 3AM", kind: "brewery" })
 cage.brewery_ratings.create!({ ipa: true, apa: true, ale: true, hefe: true, porter: true, stout: true, pale: true, blonde: true, pilsner: true, growler: true, crowler: true, rail: true })
@@ -56,3 +61,9 @@ overflow = Bar.create!({ name: "Overflow Brewing Company", location: "770 1st Av
 overflow.brewery_ratings.create!({ ipa: true, apa: true, ale: true, hefe: true, porter: true, stout: true, pale: true, blonde: true, pilsner: true, growler: true, crowler: true, rail: true })
 dissent = Bar.create!({ name: "Dissent Craft Brewing Company", location: "5518 Haines Rd N, St. Petersburg, FL 33714", phone: "(727) 342-0255", hours: "1PM - 3AM", kind: "brewery" })
 dissent.brewery_ratings.create!({ ipa: true, apa: true, ale: true, hefe: true, porter: true, stout: true, pale: true, blonde: true, pilsner: true, growler: true, crowler: true, rail: true })
+dunedin = Bar.create!({ name: "Dunedin Brewery", location: "937 Douglas Ave., Dunedin, FL 34698", phone: "(727) 736-0606", hours: "10AM - 3AM", kind: "brewery" })
+dunedin.brewery_ratings.create!({ ipa: true, apa: true, ale: true, hefe: true, porter: true, stout: true, pale: true, blonde: true, pilsner: true, growler: true, crowler: true, rail: true })
+woodwright = Bar.create!({ name: "Woodwright Brewing Company", location: "985 Douglas Ave., Dunedin, FL 34698", phone: "(727) 238-8717", hours: "9AM - 3AM", kind: "brewery" })
+woodwright.brewery_ratings.create!({ ipa: true, apa: true, ale: true, hefe: true, porter: true, stout: true, pale: true, blonde: true, pilsner: true, growler: true, crowler: true, rail: true })
+seventh = Bar.create!({ name: "7venth Sun Brewing Company", location: "1012 Broadway, Dunedin, FL 34698", phone: "(727) 733-3013", hours: "1PM - 3AM", kind: "brewery" })
+seventh.brewery_ratings.create!({ ipa: true, apa: true, ale: true, hefe: true, porter: true, stout: true, pale: true, blonde: true, pilsner: true, growler: true, crowler: true, rail: true })

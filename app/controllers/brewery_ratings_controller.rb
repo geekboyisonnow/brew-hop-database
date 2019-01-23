@@ -1,5 +1,6 @@
 class BreweryRatingsController < ApplicationController
   before_action :set_brewery_rating, only: [:show, :edit, :update, :destroy]
+  protect_from_forgery except: :create
 
   # GET /brewery_ratings
   # GET /brewery_ratings.json
