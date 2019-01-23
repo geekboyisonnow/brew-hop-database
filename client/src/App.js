@@ -35,7 +35,7 @@ class App extends Component {
         <Tabs />
         
 
-        <Route path="/" exact component={Home} />
+        <Route path="/" exact component={BarMap} />
         <Route path="/breweries" render={(props) => <BarMap kind="brewery" {...props} search={this.state.search} />} />
         <Route path="/dives" render={(props) => <BarMap kind="dive" {...props} search={this.state.search} /> } />
         <Route path="/bars" render={(props) => <BarMap {...props} search={this.state.search} /> }/>

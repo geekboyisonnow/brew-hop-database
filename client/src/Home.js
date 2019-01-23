@@ -126,22 +126,3 @@ class Home extends Component {
 
 export default Home
 
-// searchFunction() {
-//   // Declare variables 
-//   var input, filter, div, p, td, i, txtValue;
-//   input = document.getElementById("input");
-//   div = document.getElementById("search-content");
-//   p = div.getElementsByTagName("p");
-
-//   // Loop through all div rows, and hide those who don't match the search query
-//   for (i = 0; i < p.length; i++) {
-//     td = p[i].getElementsByTagName("td")[0];
-//     if (td) {
-//       txtValue = td.textContent || td.innerText;
-//       if (txtValue.toUpperCase().indexOf(filter) > -1) {
-//         p[i].style.display = "";
-//       } else {
-//         p[i].style.display = "none";
-//       }
-//     } 
-//   }
