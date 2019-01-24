@@ -161,8 +161,8 @@ class Map extends Component {
       <Marker
         longitude={this.props.userLocation.longitude}
         latitude={this.props.userLocation.latitude}
-        offsetTop={-12}
-        offsetLeft={12}
+        offsetTop={12}
+        offsetLeft={-12}
       >
         <img width="24" height="24" src={userPin} alt="Bar Pin" />
       </Marker>
@@ -201,8 +201,8 @@ class Map extends Component {
               key={bar.id}
               longitude={bar.longitude}
               latitude={bar.latitude}
-              offsetTop={-12}
-              offsetLeft={12}
+              offsetTop={12}
+              offsetLeft={-12}
             >
               <img
                 onClick={() => {
