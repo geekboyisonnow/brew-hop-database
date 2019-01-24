@@ -130,7 +130,7 @@ class BarMap extends Component {
             </div>
             <div className="bar-list">
               {this.state.bars.map(bar => {
-                return <div key={bar.id}><Link to="/barinfo">{bar.name}</Link></div>;
+                return <div key={bar.id}><Link to="/bar?">{bar.name}</Link></div>;
               })}
             </div>
           </div>
