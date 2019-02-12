@@ -83,8 +83,8 @@ class Map extends Component {
          <div><input type="checkbox" name="dive_rating[pbr]"/>PBR</div>
          <div><input type="checkbox" name="dive_rating[domestic_sign]"/>Domestic Beer Sign</div>
          <div><input type="checkbox" name="dive_rating[wash_hands]"/>No "Employees Must Wash Hands" Sign</div>
-         <div><input type="checkbox" name="dive_rating[urinal_cake]"/>Urinal Cake</div>
-         <div><input type="checkbox" name="dive_rating[smoking]"/>Allow Smoking</div>
+         <div><input type="checkbox" name="dive_rating[urinal_cake]"/>No Urinal Cake</div>
+         <div><input type="checkbox" name="dive_rating[smoking]"/>Allows Smoking</div>
          <div><input type="checkbox" name="dive_rating[dart_board]"/>Dart Board</div>
         </div></div>
       </>
@@ -140,6 +140,7 @@ class Map extends Component {
       >
         <div className="bar-popup">
           <p>{popupInfo.name}</p>
+          <p>{popupInfo.phone}</p>
           <p>{popupInfo.location}</p>
           <p>{popupInfo.hours}</p>
           <form onSubmit={popupInfo.kind === "dive" ? this.onSubmitDiveRating : this.onSubmitBreweryRating}>
@@ -161,7 +162,7 @@ class Map extends Component {
       <Marker
         longitude={this.props.userLocation.longitude}
         latitude={this.props.userLocation.latitude}
-        offsetTop={0}
+        offsetTop={-12}
         offsetLeft={-12}
       >
         <img width="24" height="24" src={userPin} alt="Bar Pin" />
@@ -201,7 +202,7 @@ class Map extends Component {
               key={bar.id}
               longitude={bar.longitude}
               latitude={bar.latitude}
-              offsetTop={0}
+              offsetTop={-12}
               offsetLeft={-12}
             >
               <img

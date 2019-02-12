@@ -5,7 +5,7 @@ import Header from './Header';
 import Search from './Search';
 import Tabs from './Tabs';
 import BarMap from './BarMap';
-import BarRatings from './BarRatings'
+// import Home from './Home'
 // import About from './About';
 import Footer from './Footer';
 import './App.css';
@@ -39,7 +39,7 @@ class App extends Component {
         <Route path="/breweries" render={(props) => <BarMap kind="brewery" {...props} search={this.state.search} />} />
         <Route path="/dives" render={(props) => <BarMap kind="dive" {...props} search={this.state.search} /> } />
         <Route path="/bars" render={(props) => <BarMap {...props} search={this.state.search} /> }/>
-        <Route path="/barratings" component={BarRatings} />
+        {/* <Route path="/home" component={Home} /> */}
 
         <Footer />
       </div>
